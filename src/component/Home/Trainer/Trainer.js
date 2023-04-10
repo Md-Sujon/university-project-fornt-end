@@ -14,8 +14,6 @@ const Trainer = () => {
 
     const [trainer, setTrainer] = useState([]);
 
-
-
     useEffect(() => {
         fetch('http://localhost:5000/trainers')
             .then(res => res.json())
@@ -36,8 +34,8 @@ const Trainer = () => {
         xl={3}
         className="g-3 container-lg  mx-lg-auto mx-md-auto mx-0">
             {trainer.map ((tr)=>(
-
-            <Col sm={12} md={6} lg={3}>
+             
+            <Col sm={12} md={6} lg={3} key={tr._id}>
               <div>
                 <img 
                 src={tr?.imageURL}  

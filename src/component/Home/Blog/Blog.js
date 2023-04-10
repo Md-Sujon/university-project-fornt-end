@@ -32,7 +32,7 @@ const Blog = () => {
               </div>
              <div className="row d-flex justify-content-center">
                {
-                BlogData.map(data=><BlogCard data={data}></BlogCard> )  
+                BlogData.map(data=><BlogCard data={data} key={data.name}></BlogCard> )  
                }
                </div>
         </section>

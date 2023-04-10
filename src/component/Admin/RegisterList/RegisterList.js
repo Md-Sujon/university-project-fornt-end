@@ -16,41 +16,11 @@ const RegisterList = () => {
 
 
 
+
+
+
     return (
-      /*   <div className="bg-light mt-5 row registerList">
-           
-            <div className="col-md-2">
-            <AddMinSidebar></AddMinSidebar>
-            </div>
-    <div className="col-md-7">
-    <h1>Register List</h1>
-    <h5 className="text-primary">Total Registration : {registration.length}</h5>
-    {
-      registration.map(data => 
-<table style={{width:"800px"}} class="table">
-  <thead class="thead-dark">
-    <tr style={{width:"800px"}}>
-      <th scope="col">Name</th>
-      <th scope="col">Course</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <tr>
-      <th scope="row">{data.name}</th>
-      <td>{data.course}</td>
-      <td>{data.email}</td>
-      <td>{data.phone}</td>
-    </tr>
-    
-  </tbody>
-</table>
-)  
-    }
-    </div>
-    </div> */
+     
 
     <div>
     <AddMinSidebar></AddMinSidebar>
@@ -85,7 +55,7 @@ const RegisterList = () => {
          className="delete-btn text-center"
          // onClick={() => handleDelete(order?._id)}
        >
-         <i class="far fa-trash-alt"></i>
+         <i className="far fa-trash-alt"></i>
        </td>
      </tr>
    </tbody>

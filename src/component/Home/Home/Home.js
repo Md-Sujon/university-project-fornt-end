@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 
 
 import HeaderTop from '../HeaderTop/HeaderTop';
+import LiveChat from '../LiveChat/LiveChat';
 import Navbar from '../Navbar/Navbar';
 import Review from '../Review/Review';
 import Trainer from '../Trainer/Trainer';
@@ -21,6 +22,7 @@ const Home = () => {
             <Blog></Blog>
             <Trainer></Trainer>
             <Review></Review>
+            <LiveChat></LiveChat>
             {/* <FAQ></FAQ> */}
             <ContactUs></ContactUs>
             <Footer></Footer>

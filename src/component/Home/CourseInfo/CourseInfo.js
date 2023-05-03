@@ -6,13 +6,22 @@ import Navbar from '../Navbar/Navbar';
 const CourseInfo = () => {
     const { _id } = useParams();
 
+    const [trainer, setTrainer] = useState([]);
+
   const [course, setCourse] = useState({});
   useEffect(() => {
     fetch(`http://localhost:5000/CourseInfo/${_id}`)
       .then((res) => res.json())
-      .then((data) => setCourse(data));
-     
+      .then((data) => setCourse(data));  
   }, []);
+
+
+  useEffect(() => {
+    fetch('http://localhost:5000/trainers')
+        .then(res => res.json())
+        .then(data => setTrainer(data))
+
+}, [])
     return (
       <div className="row ">
         <Navbar></Navbar>
@@ -24,9 +33,8 @@ const CourseInfo = () => {
           <div>
             <h3 className="mt-5">{course?.name}</h3>
             <p>{course?.description}</p>
-            {/* <p className="product-price">
-              Price : <span className="text">{course?.price} </span> BDT
-            </p> */}
+         
+    
           </div>
         </div>
       </div>
@@ -49,6 +57,11 @@ const CourseInfo = () => {
           </div>
         </div>
       </div>
+
+
+
+
+
     </div>
     );
 };

@@ -5,7 +5,7 @@ import {UserContext} from '../../App'
 import { useHistory, useLocation } from 'react-router';
 import './Login.css'
 import firebaseConfig from './FirebaseConfig';
-import { useContext, useEffect} from "react";
+import { useContext} from "react";
 import Navbar from "../Home/Navbar/Navbar";
 import Swal from 'sweetalert2';
 import loginImg from './../../images/login.jpg';
@@ -17,6 +17,7 @@ import { localStoreKey } from '../../Data/Constant';
 
 
 
+
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);;
  }else {
@@ -25,8 +26,6 @@ if (!firebase.apps.length) {
 
 
 const Login = () => {
-
-
   const {
     register,
     handleSubmit,
@@ -34,6 +33,7 @@ const Login = () => {
   } = useForm();
     var provider = new firebase.auth.GoogleAuthProvider();
    const [loggedInUser,setLoggedInUser]=useContext(UserContext);
+     
    const history=useHistory();
    const location=useLocation();
    let { from } = location.state || { from: { pathname: "/" } };
@@ -45,10 +45,8 @@ const Login = () => {
     firebase.auth()
   .signInWithPopup(provider)
   .then((result) => {
-    // console.log(result);
+        
       const {displayName,email}=result.user;
-      // const obj = {displayName,email}
-      console.log(from)
       const singedInUser={name:displayName,email}
       localStorage.setItem(localStoreKey.user,JSON.stringify(singedInUser));
     setLoggedInUser(singedInUser)
@@ -66,14 +64,7 @@ const Login = () => {
 
 }
 
-useEffect(()=>{
-  console.log('text');
-  // const signInUser = localStorage.getItem(localStoreKey.user);
-console.log('Some text here');
 
-
-
-},[]);
 
 
 const onSubmit = (data) => {
@@ -102,6 +93,7 @@ const onSubmit = (data) => {
 
   });
 };
+
 
 
 

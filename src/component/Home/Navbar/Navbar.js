@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
-import "firebase/auth";
+import  "firebase/auth";
 import './Navbar.css';
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -17,9 +17,9 @@ if (!firebase.apps.length) {
 
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
+             
   const [isAdmin, setIsAdmin] = useState(false);
-
+ 
   useEffect(() => {
     if(loggedInUser?.email){
       fetch('http://localhost:5000/admin', {
@@ -39,6 +39,9 @@ const Navbar = () => {
     setLoggedInUser({})
     Swal.fire("Good job!", "Logout Successfully!");
   }
+
+
+ 
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark NavColor">

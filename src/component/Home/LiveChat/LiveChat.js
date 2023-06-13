@@ -3,10 +3,10 @@ import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 import { useRef } from 'react';
 
 const LiveChat = () => {
-    const tawkMessengerRef = useRef();
+    // const tawkMessengerRef = useRef();
 
     const onLoad = () => {
-        console.log('onLoad works!');
+        // console.log('onLoad works!');
     };
 
     // const handleMinimize () => {
@@ -19,7 +19,7 @@ const LiveChat = () => {
         <TawkMessengerReact
             propertyId="645261df31ebfa0fe7fbc11c"
             widgetId="1gvgsskku"/>
-            onLoad={onLoad}
+            {/* onLoad={onLoad} */}
     </div>
     );
 };

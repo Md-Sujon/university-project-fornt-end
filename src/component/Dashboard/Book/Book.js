@@ -1,18 +1,24 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import { useForm } from "react-hook-form";
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import { UserContext } from '../../../App';
 import Swal from 'sweetalert2';
+import { useParams } from 'react-router-dom';
 
 const Book = () => {
+  const { _id } = useParams();
   const [loggedInUser,setLoggedInUser] = useContext(UserContext);
   const { register, handleSubmit} = useForm(' ');
-  const [registrationData,setRegistrationData] = useState(null)
+  const [registrationData,setRegistrationData] = useState(null);
+  // const [course, setCourse] = useState({});
 
   const  onSubmit = data => {
+    // console.log(data)
     setRegistrationData(data)
 };
+
+// console.log(loggedInUser);
 
 const handlePaymentSuccess = paymentId => {
   
@@ -57,19 +63,30 @@ const url =`http://localhost:5000/AddRegistration`;
   <div className="form-group">
     <label for="exampleInputEmail1">Name</label>
 
-    <input type="name" name="name"   {...register("name")} className="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Name"/>
+    <input type="name" 
+    name="name"   
+     {...register("name")} 
+     value={loggedInUser?.name}
+     className="form-control"  
+     id="exampleInputEmail1" 
+     aria-describedby="emailHelp"
+     />
   </div>
   <div className="form-group">
-    <label for="exampleInputPassword1">Enter Your Email</label>
-    <input type="email"   {...register("email")} name="email" className="form-control"  placeholder="Enter Your Email"/>
+    <label for="exampleInputPassword1">Email</label>
+    <input type="email"   {...register("email")}
+      value={loggedInUser?.email}
+     name="email" className="form-control" />
   </div>
   <div className="form-group">
     <label for="exampleInputPassword1">Enter Your Course Name</label>
-    <input type="text" name="course"   {...register("course")} className="form-control"   placeholder="Enter Your Course Name"/>
+    <input required type="text" name="course" 
+    // value={course?.name}
+    {...register("course")} className="form-control"   placeholder="Enter Your Course Name"/>
   </div>
   <div className="form-group">
     <label for="exampleInputPassword1">Enter Your phone Number</label>
-    <input type="phone" name="phone"   {...register("phone")} className="form-control"   placeholder="Enter Your Phone Number"/>
+    <input required type="phone" name="phone"   {...register("phone")} className="form-control"   placeholder="Enter Your Phone Number"/>
 
    </div>
  <br/>

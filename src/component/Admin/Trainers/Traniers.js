@@ -72,11 +72,11 @@ const Traniers = () => {
 <br/>
 <div className="form-group">
 {/* <label for="exampleInputPassword1">Enter Your Email</label> */}
-<input type="text" {...register("position")} className="form-control" name="position" id="exampleInputPassword1" placeholder="Trainer Post" required/>
+<input type="text" {...register("position")} className="form-control" name="position" id="exampleInputPassword1" placeholder="Trainer Designation" required/>
 </div>
 <br/>
 <div className="form-group">
-<label for="exampleFormControlFile1">Image Your</label>
+<label for="exampleFormControlFile1">Image</label>
 <br></br>
 <input type="file" name="example" onChange={handleImageUpload} className="form-control-file" id="exampleFormControlFile1"/>
 </div>

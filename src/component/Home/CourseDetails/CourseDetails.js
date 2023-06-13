@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
-import TrainerDetails from "../TrainerDetails/TrainerDetails";
+// import TrainerDetails from "../TrainerDetails/TrainerDetails";
 import "./CourseDetails.css";
 
 
@@ -17,8 +17,10 @@ const CourseDetails = ({ course }) => {
         src={course.imageURL}
         alt=""
       />
-      <h4 className="pt-3">{course.name}</h4>
-      <p >{course.description}</p>
+      <h4 className="pt-3" height="200px">{course.name}</h4>
+     <div height="500px">
+     <p >{course.description.slice(0,150)}</p>
+     </div>
     <div className="d-flex p-2">
     <div className="mx-1">
     <Link to={`/CourseInfo/${course._id}`}>

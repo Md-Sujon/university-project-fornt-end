@@ -1,8 +1,8 @@
 import React from 'react';
-// import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser';
 import "./Contact.css";
 import { useForm } from 'react-hook-form';
-
+import Swal from 'sweetalert2';
 import aboutImg from './../../../images/contact.jpg';
 import { Container, Row ,Col } from 'react-bootstrap';
 const ContactUs = () => {
@@ -13,7 +13,25 @@ const ContactUs = () => {
         formState: { errors },
       } = useForm();
       const sendEmail = (data, e) => {
-     
+        e.preventDefault();
+        emailjs
+          .sendForm(
+            "service_xb7axh7",
+            "template_2czizgk",
+            e.target,
+            "4chiriwV0iYT2zakl"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+              Swal.fire("Good job!", "Mail Sent Successfully!");
+            },
+            (error) => {
+              console.log(error.text);
+              Swal.fire("opps!", "Mail sent failed!");
+            }
+          );
+        e.target.reset();
       };
     return (
     

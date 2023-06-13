@@ -3,10 +3,12 @@ import { Table } from 'react-bootstrap';
 import { UserContext } from '../../../App';
 import AddMinSidebar from '../AddMinSidebar/AddMinSidebar';
 import './RegisterList.css';
+import Swal from 'sweetalert2';
 
 const RegisterList = () => {
 
     const [registration,setRegistration]=useState([]);
+    console.log(registration)
     const [loggedInUser,setLoggedInUser]= useContext(UserContext);
     useEffect(() => {
         fetch('http://localhost:5000/Registrations')
@@ -15,7 +17,26 @@ const RegisterList = () => {
     },[])
 
 
+ //*handle delete
+ const handleDelete = (id) => {
+  const proceed = window.confirm("Are you sure, you want to delete?");
+  if (proceed) {
 
+
+  fetch(`http://localhost:5000/Registrations/${id}`, {
+    method: 'DELETE'
+  })
+  .then((data) => {
+    if (data.deletedCount > 0) {
+      Swal.fire("Good job!", "Data Deleted Successfully!");
+      // setControl(!control);
+    }
+  });
+  // .then(res => res.json())
+  // .then(result => setRegistration(result))
+  Swal.fire("Good job!", "Data Deleted Successfully!");
+  }
+};
 
 
 
@@ -26,7 +47,7 @@ const RegisterList = () => {
     <AddMinSidebar></AddMinSidebar>
 <div className='table-Style'>
 <h1 className="text-center custom-margin">
- ALL Orders : {registration?.length}{" "}
+ ALL Registration : {registration?.length}{" "}
 </h1>
 
 <Table responsive striped bordered hover className="w-75 mx-auto ">
@@ -41,7 +62,7 @@ const RegisterList = () => {
      <th>Action</th>
    </tr>
  </thead>
- {registration.map((rg, index) => (
+ {registration?.map((rg, index) => (
    <tbody key={rg?._id}>
      <tr>
        <td>{index}</td>
@@ -53,7 +74,7 @@ const RegisterList = () => {
       
        <td
          className="delete-btn text-center"
-         // onClick={() => handleDelete(order?._id)}
+         onClick={() => handleDelete(rg?._id)}
        >
          <i className="far fa-trash-alt"></i>
        </td>

@@ -6,6 +6,7 @@ import './BookList.css';
 
 const BookList = () => {
     const [registration,setRegistration]=useState([]);
+    // console.log(registration)
     const [loggedInUser,setLoggedInUser]= useContext(UserContext);
     useEffect(() => {
         fetch('http://localhost:5000/Registration?email='+loggedInUser.email)

@@ -31,6 +31,13 @@ const AddMinSidebar = () => {
                 </Link>
                </li>
             
+               <li>
+               <Link to="/Add-projects" className="text-decoration-none">
+                    <FontAwesomeIcon icon={faPlusCircle} /> <span>Add Projects</span> 
+                    
+                    
+                </Link>
+               </li>
                 <li>
                 <Link to="/Make-Admin" className="text-decoration-none">
                     <FontAwesomeIcon icon={faUserPlus} /> <span>Make-Admin</span>
@@ -42,12 +49,18 @@ const AddMinSidebar = () => {
                     <FontAwesomeIcon icon={faTasks} /> <span>Manage-Course</span>
                     
                  </Link>
+                </li> 
+                  <li>
+                <Link to="/StudentAssignment" className="text-decoration-none">
+                    <FontAwesomeIcon icon={faTasks} /> <span>Student Assignment</span>
+                    
+                 </Link>
                 </li>
 
 
                 <li>
                 <Link to="/tranier" className="text-decoration-none">
-                    <FontAwesomeIcon icon={faTasks} /> <span>New Tranier</span>
+                    <FontAwesomeIcon icon={faTasks} /> <span>New Trainer</span>
                  </Link>
                 </li>
             

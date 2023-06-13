@@ -26,6 +26,7 @@ if (!firebase.apps.length) {
 
 
 const Login = () => {
+
   const {
     register,
     handleSubmit,
@@ -45,11 +46,13 @@ const Login = () => {
     firebase.auth()
   .signInWithPopup(provider)
   .then((result) => {
-        
-      const {displayName,email}=result.user;
-      const singedInUser={name:displayName,email}
+        // console.log(result)
+      const {displayName,email,photoURL}=result.user;
+      // console.log(result.user)
+      // console.log(photoURL);
+      const singedInUser={name:displayName,email,photoURL}
       localStorage.setItem(localStoreKey.user,JSON.stringify(singedInUser));
-    setLoggedInUser(singedInUser)
+    setLoggedInUser(singedInUser);
     history.replace(from)
     Swal.fire(
       'Good job!',
@@ -77,6 +80,7 @@ const onSubmit = (data) => {
     // Signed in
     // console.log(userCredential)
     const user = userCredential.user;
+    // console.log(user)
     const singedInUser={name:user?.displayName,email:user?.email}
     localStorage.setItem(localStoreKey.user,JSON.stringify(singedInUser));
    setLoggedInUser(singedInUser)
@@ -113,28 +117,31 @@ const onSubmit = (data) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <Button onClick={handleGoogleSingIn} className="google-btn radius-form btn btn-light"><img width={30} src={google} alt="test" /> SIGN IN WITH GOOGLE</Button>
                   <input
-                    {...register("email")}
+                    {...register("email",{ required: true })}
                     type="email"
                     placeholder="Email"
                     className="p-2 m-2 width-form  radius-form"
+                    id="email"
+                    required
                   />
                   <br />
                   <input
-                    {...register("password")}
+                    {...register("password",{ required: true })}
                     type="password"
                     placeholder="Password"
                     className="p-2 m-2 width-form radius-form"
+                    id='pass'
+                    required
                   />
 
                   <br />
-                  {errors.exampleRequired && (
-                    <span>This field is required</span>
-                  )}
+                  {errors.exampleRequired && <p>This field is required</p>}
 
                   <input
                     type="submit"
                     value="Login"
-                    className="p-2 m-2 btn-custom width-form radius-form"
+                    className="loginbtn p-2 m-2 btn-custom width-form radius-form"
+                    id='loginbtn'
                   />
                 </form>
                 <Link style={{ textDecoration: "none" }} to="/SignUp">

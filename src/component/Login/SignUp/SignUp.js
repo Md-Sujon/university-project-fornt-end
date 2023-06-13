@@ -106,6 +106,7 @@ const SignUp = () => {
                       {...register("name")}
                       placeholder="Name"
                       className="p-2 m-2 w-75 radius-form"
+                      required
                     />
                     <br />
 
@@ -117,20 +118,27 @@ const SignUp = () => {
                     /> */}
 
                     <input
-                      type="text"
+                      // type="text"
                       placeholder="Email"
                       className="p-2 m-2 w-75 radius-form"
-                      {...register("email", {
-                        required: true,
-                        pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                      })}
+                      {...register("email",{
+                        required: 'Email is required',
+                        pattern: {
+                            value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                            message: 'Please enter a valid email',
+                        },
+                    })}
+                    type="email"
+                    required
                     />
+                    
                     {errors.email && <span>Invalid email</span>}
                     <input
                       {...register("number")}
                       type="tel"
                       placeholder="Number"
                       className="p-2 m-2 w-75 radius-form"
+                      required
                     />
                   
                      

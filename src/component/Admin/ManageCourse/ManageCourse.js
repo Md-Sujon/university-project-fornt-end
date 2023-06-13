@@ -6,7 +6,7 @@ const ManageCourse = ({dele}) => {
        
     const [del,setDel]=useState([]);
          
-    console.log('this result', del);
+    // console.log('this result', del);
 
     useEffect (()=>{
         const url= 'http://localhost:5000/courses'
@@ -17,17 +17,21 @@ const ManageCourse = ({dele}) => {
 
 
     return (
-        <div className="bg-light mt-5 row registerList">
+        <div className="bg-light mt-5 row registerList ">
            
             <div className="col-md-2">
             <AddMinSidebar></AddMinSidebar>
             </div>
     <div className="col-md-7 ">
-    <h1>Manage Course</h1>
-    
+    <h1>Manage Courses</h1>
+       <div className=" d-flex justify-content-center">
+       <div className="w-100 row">
+            
             {
-                del.map(dele => <Delete dele={dele}></Delete>)
-           }
+                    del.map(dele => <Delete dele={dele}></Delete>)
+               }
+            </div>
+       </div>
     </div>
     </div>
     );

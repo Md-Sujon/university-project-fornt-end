@@ -26,7 +26,10 @@ import Tranier from './component/Admin/Trainers/Traniers';
 import { localStoreKey } from './Data/Constant';
 import PrivateAuth from './component/PrivateRoute/PrivateAuth';
 import ContactUs from './component/Home/ContactUs/ContactUs';
-
+import Assignment from './component/Dashboard/Assignment/Assignment'
+import TotalOverview from './component/Home/TotalOverview/TotalOverview';
+import AddProjects from './component/Admin/AddProjects/AddProjects';
+import StudentAssignment from './component/Admin/StudentAssignment/StudentAssignment';
 
 export const UserContext = createContext();
 
@@ -35,7 +38,7 @@ function App() {
   useEffect(()=>{
 
     const signInUser = JSON.parse(localStorage.getItem(localStoreKey?.user));
-    console.log(signInUser)
+    // console.log(signInUser)
     if(signInUser?.email) {
       setLoggedInUser(signInUser)
     }else{
@@ -61,9 +64,9 @@ function App() {
           <PrivateRoute path="/Registration">
             <Book></Book>
           </PrivateRoute>
-          <Route path="/Project">
+          <PrivateRoute path="/Project">
             <Project></Project>
-          </Route>
+          </PrivateRoute>
           <Route path="/ContactUs">
             <ContactUs></ContactUs>
           </Route>
@@ -85,12 +88,24 @@ function App() {
           </Route>
           <Route path="/Add-Course">
             <AddCourse></AddCourse>
+          </Route> 
+           <Route path="/StudentAssignment">
+            <StudentAssignment></StudentAssignment>
+          </Route> 
+           <Route path="/Add-projects">
+            <AddProjects></AddProjects>
+          </Route>
+           <Route path="/Assignment">
+            <Assignment></Assignment>
           </Route>
           <Route path="/Make-Admin">
             <MakeAdmin></MakeAdmin>
           </Route>
           <Route path="/Manage-Course">
             <ManageCourse></ManageCourse>
+          </Route>
+          <Route path="/TotalOverview">
+            <TotalOverview></TotalOverview>
           </Route>
           <Route path="/Tranier">
            <Tranier></Tranier>

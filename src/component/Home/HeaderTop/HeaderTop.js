@@ -18,13 +18,13 @@ const HeaderTop = () => {
 
                 </div>
                 <div className="col-md-4 mt-5 ms-4 text-justify">
-                    <h2 >Best educational content  sharing platform  trining center</h2>
+                    <h2 >Best educational content  sharing platform  trining center.<i class="fa-solid fa-circle-info"></i></h2>
                     <div style={{ textAlign: 'center', textColor: 'blue' }}>
 
                     </div>
                     <br/>
                     <p >An educational content sharing platform is an online platform that allows educators, students, and other interested parties to share and access educational content. These platforms can take various forms, including websites, online communities, and social media platforms.</p>
-                        <button className="btn-custom" ><a className='text-decoration-none text-white' rel="noopener" href="https://www.google.com/" target="_blank">Learn More</a></button>
+                        <button className="btn-custom" ><a className='text-decoration-none text-white' rel="noopener" href="https://www.google.com/" target="_blank">Learn More </a></button>
                 </div>
             </section>
 

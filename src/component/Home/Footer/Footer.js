@@ -16,7 +16,7 @@ const Footer = () => {
 						About us
 					</div>	
 					<p className="white-text">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 text of the printing.
+					An educational content sharing platform is an online platform that allows educators, students, and other interested parties to share and access educational content. These platforms can take various forms, including websites, online communities, and social media platforms.
 					</p>
 				</div>
 				<div className="col-md-3 m-b-30">

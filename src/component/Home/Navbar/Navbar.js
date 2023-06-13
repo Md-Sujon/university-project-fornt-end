@@ -9,6 +9,9 @@ import { UserContext } from "../../../App";
 import firebaseConfig from './../../Login/FirebaseConfig';
 import { localStoreKey } from "../../../Data/Constant";
 import Swal from "sweetalert2";
+import { Image } from "react-bootstrap";
+import imgIcon from './../../../images/logo.png'
+import imgBlank from './../../../images/blank-profile-picture-973460_1280.webp'
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);;
 }else {
@@ -17,7 +20,7 @@ if (!firebase.apps.length) {
 
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-             
+            //  console.log(loggedInUser.photoURL);
   const [isAdmin, setIsAdmin] = useState(false);
  
   useEffect(() => {
@@ -60,7 +63,12 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <h3>
               <Link className="nav-link ml-5 text-white" to="/Home">
-              Educational Content Sharing Platform
+              <Image
+                className="ms-3"
+                style={{ height: "50px", width: "12rem" }}
+                src={imgIcon}
+                // roundedCircle
+              />
               </Link>
             </h3>
             <div class=" navbar-nav ms-auto mb-2 mb-lg-0">
@@ -71,6 +79,7 @@ const Navbar = () => {
                 aria-current="page"
                 href="#"
                 to="/Home"
+                id="home"
               >
                 Home
               </Link>
@@ -80,6 +89,7 @@ const Navbar = () => {
                 aria-current="page"
                 href="#"
                 to="/ContactUs"
+                id="contact"
               >
                 Contact Us
               </Link>
@@ -89,6 +99,7 @@ const Navbar = () => {
                 aria-current="page"
                 href="#"
                 to="/Project"
+                id="project"
               >
                 Project
               </Link>
@@ -96,6 +107,15 @@ const Navbar = () => {
                   </div>
                 }
 
+
+          {loggedInUser?.email && (
+              <Image
+                className="ms-3"
+                style={{ height: "40px", width: "40px" }}
+                src={loggedInUser?.photoURL  || imgBlank}
+                roundedCircle
+              />
+            )}
 
                {
                 loggedInUser?.email ?
@@ -126,6 +146,19 @@ const Navbar = () => {
                 to="/Admin"
               >
               Admin DashBoard
+              </Link>
+                  </div>
+                }
+
+        {!isAdmin && loggedInUser?.email && 
+                  <div>
+                    <Link
+                class="nav-link ms-5 text-white active"
+                aria-current="page"
+                href="#"
+                to="/dashboard"
+              >
+              User DashBoard
               </Link>
                   </div>
                 }

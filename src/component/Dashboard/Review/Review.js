@@ -3,17 +3,21 @@ import { useForm } from 'react-hook-form';
 import Sidebar from '../Sidebar/Sidebar';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import { UserContext } from '../../../App';
 
 const Review = () => {
-
+  const [loggedInUser,setLoggedInUser] = useContext(UserContext);
   const { register, handleSubmit,reset} = useForm();
   const [imageURL,setImageURL]=useState(null);
 
   const onSubmit = data => {
+    // console.log(data)
     const eventData={
         name: data.name,
         designation: data.designation,
         description: data.description,
+        rating: data.rating,
         imageURL: imageURL
     }
     reset();
@@ -27,11 +31,11 @@ const Review = () => {
      body: JSON.stringify(eventData)
     })
     .then(res=> console.log('server side response', res));
-
+    Swal.fire("Good job!", "Review given Successfully!");
 };
 
          const handleImageUpload = event => {
-          console.log(event.target.files[0]);
+          // console.log(event.target.files[0]);
           const imageData = new FormData();
          imageData.set('key', '32a97345521821b6bd065fe88e703ca3');
          imageData.append('image', event.target.files[0])
@@ -45,7 +49,7 @@ const Review = () => {
       .catch(function (error) {
        console.log(error);
       });
-      Swal.fire("Good job!", "Review given Successfully!");
+
       }
 
     return (
@@ -58,13 +62,17 @@ const Review = () => {
     <h1>Review</h1>
   <div className="form-group">
 
-    <input type="text"  {...register("name")} className="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Name" required/>
+    <input type="text"  {...register("name")} 
+      value={loggedInUser?.name}
+       className="form-control"
+        name="name" id="exampleInputEmail1" aria-describedby="emailHelp" 
+       />
 
 
     </div>
   <br/>
   <div className="form-group">
-    {/* <label for="exampleInputPassword1">Enter Your Email</label> */}
+ 
 
     <input type="text"  {...register("designation")} className="form-control" name="designation" id="exampleInputPassword1" placeholder="Course designation" required/>
 
@@ -72,15 +80,26 @@ const Review = () => {
   </div>
   <br/>
   <div className="form-group">
-  
-
-    <textarea  {...register("description")} className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Description" required></textarea>
-
-
+    <textarea  {...register("description")} className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Write your experience" required></textarea>
   </div>
+  
+  <div>
+  <select required
+                {...register("rating")}
+                className="p-2 m-2"
+                style={{ width: "75%" }}
+              >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+              </select>
+  </div>
+
   <br/>
   <div className="form-group">
-  <label for="exampleFormControlFile1">Image Your</label>
+  <label for="exampleFormControlFile1">Image</label>
   <br></br>
     <input type="file" name="example" onChange={handleImageUpload} className="form-control-file" id="exampleFormControlFile1"/>
   </div>

@@ -19,7 +19,7 @@ const LiveChat = () => {
         <TawkMessengerReact
             propertyId="645261df31ebfa0fe7fbc11c"
             widgetId="1gvgsskku"/>
-            onLoad={onLoad}
+            
     </div>
     );
 };
